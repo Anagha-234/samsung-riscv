@@ -1,0 +1,179 @@
+1. auipc a5, 0xffff0
+Instruction Type: U (Upper Immediate)
+Opcode: 0110111
+rd: a5 = 11101
+Imm[31:12]: 0xffff0
+32-bit Encoding: 0110111 | 11101 | 0xFFFF0 (shifted) = 0xFFFF000F
+
+Explanation:
+auipc: This is an upper immediate instruction that takes a 20-bit immediate value and shifts it left by 12 bits before adding it to the program counter (PC).
+It is a U-type instruction where the 20-bit immediate is stored in the upper 20 bits of the instruction.
+
+2. addi a5, a5, -312
+Instruction Type: I (Immediate)
+Opcode: 0010011
+rd: a5 = 01010
+rs1: a5 = 01010
+Imm[11:0]: -312 (in binary) = 1111111110010000
+32-bit Encoding: 0010011 | 01010 | 01010 | 1111111110010000 = 0xFFF4F000
+
+Explanation:
+addi: This is an I-type instruction that adds an immediate value to a register.
+The immediate value -312 is encoded in the instruction, and the result is stored in a5.
+
+3. beqz a5, 10150
+Instruction Type: B (Branch)
+Opcode: 1100011
+rs1: a5 = 01010
+rs2: x0 = 00000
+Imm[12]: 1
+Imm[10:5]: 10101
+Imm[4:1]: 0001
+Imm[11]: 1
+Imm[0]: 0
+32-bit Encoding: 1100011 | 01010 | 00000 | 10101 | 00001 | 0000000 = 0xF1225010
+
+Explanation:
+beqz: This is a branch instruction that checks if a5 is equal to zero (branch if zero). The offset 10150 is calculated and stored as the immediate value in the instruction.
+
+4. auipc a0, 0x3
+Instruction Type: U (Upper Immediate)
+Opcode: 0110111
+rd: a0 = 00000
+Imm[31:12]: 0x3 (shifted by 12)
+32-bit Encoding: 0110111 | 00000 | 00000000000000000011 = 0x0000000B
+
+Explanation:
+auipc: This is another upper immediate instruction. It shifts the immediate 0x3 by 12 bits, adding it to the program counter.
+
+5. addi a0, a0, -1480
+Instruction Type: I (Immediate)
+Opcode: 0010011
+rd: a0 = 01000
+rs1: a0 = 01000
+Imm[11:0]: -1480 (in binary) = 1111111111111000
+32-bit Encoding: 0010011 | 01000 | 01000 | 1111111111111000 = 0xFFFFF1A0
+
+Explanation:
+addi: Similar to the previous addi instruction, but this time with an immediate value of -1480. This instruction adds -1480 to a0.
+
+6. j 12b34
+Instruction Type: J (Jump)
+Opcode: 1101111
+Imm[20]: 0
+Imm[10:1]: 1100100110
+Imm[11]: 1
+Imm[19:12]: 100011
+32-bit Encoding: 1101111 | 0000 | 110010 | 011111 | 1100111 = 0x12B34000
+
+Explanation:
+j: This is a jump instruction. It uses a 20-bit immediate, which represents the target address to jump to, with the program counter being updated.
+
+7. ret
+Instruction Type: I (Immediate, jalr x0, ra, 0)
+Opcode: 1100111
+rd: x0 = 00000
+rs1: ra = 00001
+Imm[11:0]: 0
+32-bit Encoding: 1100111 | 00000 | 00001 | 000000000000 = 0xFFF400F0
+
+Explanation:
+ret: This is a special case of jalr, where the program counter is set to the value in the return address register ra, effectively making it a return instruction.
+
+8. sub a2, a2, a0
+Instruction Type: R (Register)
+Opcode: 0110011
+rd: a2 = 00010
+rs1: a2 = 00010
+rs2: a0 = 01000
+funct3: 000 (indicating subtraction)
+funct7: 0100000 (indicating subtraction)
+32-bit Encoding: 0110011 | 00010 | 00010 | 01000 | 000 | 0100000 = 0xFFFFFF00
+
+Explanation:
+sub: This is an R-type instruction that performs subtraction between a2 and a0, storing the result in a2.
+
+9. jr zero
+Instruction Type: I (Immediate, jalr x0, zero, 0)
+Opcode: 1100111
+rd: x0 = 00000
+rs1: zero = 00000
+Imm[11:0]: 0
+32-bit Encoding: 1100111 | 00000 | 00000 | 0000000111 = 0x0F004000
+
+Explanation:
+jr: The jr instruction is implemented using jalr where the jump target is specified by the value in the zero register (which is always zero). This results in a jump to the address stored in the register.
+
+10. slli a5, a0, 0x1
+Instruction Type: I (Immediate)
+Opcode: 0010011
+rd: a5 = 01010
+rs1: a0 = 01000
+Imm[5:0]: 1 (left shift amount)
+32-bit Encoding: 0010011 | 01000 | 01010 | 000001 = 0x00056033
+
+Explanation:
+slli: This is a shift left logical instruction. It shifts the contents of a0 left by 1 and stores the result in a5.
+
+11. lui a4, 0x3fe92
+Instruction Type: U (Upper Immediate)
+Opcode: 0110111
+rd: a4 = 00100
+Imm[31:12]: 0x3FE92
+32-bit Encoding: 0110111 | 00100 | 00000000000000000011 = 0x3FE92000
+
+Explanation:
+lui: This loads an immediate into the upper 20 bits of the register a4. It is a U-type instruction.
+
+12. sd ra, 24(sp)
+Instruction Type: S (Store)
+Opcode: 0100011
+rs2: ra = 00001
+rs1: sp = 00101
+Imm[11:5]: 0000000
+Imm[4:0]: 11000
+32-bit Encoding: 0100011 | 00001 | 00101 | 0000000 | 11000 = 0x00F52233
+
+Explanation:
+sd: This stores the value of ra into memory at the address in sp + 24.
+
+13. srli a5, a5, 0x21
+Instruction Type: I (Immediate)
+Opcode: 0010011
+rd: a5 = 01010
+rs1: a5 = 01010
+Imm[5:0]: 33 (shift amount)
+32-bit Encoding: 0010011 | 01010 | 01010 | 100001 = 0x00050073
+
+Explanation:
+srli: This is a shift right logical instruction. It shifts the contents of a5 right by 33 and stores the result back in a5.
+
+14. bge a4, a5, 10280
+Instruction Type: B (Branch)
+Opcode: 1100011
+rs1: a4 = 00100
+rs2: a5 = 01010
+Imm[12]: 1
+Imm[10:5]: 10101
+Imm[4:1]: 0000
+Imm[11]: 1
+Imm[0]: 0
+32-bit Encoding: 1100011 | 00100 | 01010 | 10101 | 00000 = 0xF1225010
+
+Explanation:
+bge: This is a branch instruction that checks if a4 is greater than or equal to a5. If true, it branches to the address specified by the immediate value.
+
+15. blt a5, a4, 10244
+Instruction Type: B (Branch)
+Opcode: 1100011
+rs1: a5 = 01010
+rs2: a4 = 00100
+Imm[12]: 0
+Imm[10:5]: 10101
+Imm[4:1]: 0000
+Imm[11]: 1
+Imm[0]: 0
+32-bit Encoding: 1100011 | 01010 | 00100 | 10101 | 00000 = 0xF1226010
+
+Explanation:
+blt: This is a branch instruction that checks if a5 is less than a4. If true, it branches to the address specified by the immediate value.
