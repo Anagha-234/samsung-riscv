@@ -147,7 +147,7 @@ Since the button is inbuilt, no external wiring is required. However, for refere
 | **UART_RX**    | PA10        | Serial input (optional) |
 
 ---
-**Task 6: Final Code Submission & Application Demo**
+# Task 6: Final Code Submission & Application Demo
 
 **📌 Overview**
 
