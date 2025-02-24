@@ -115,3 +115,34 @@ lui r19, 0x1000
 Expected behavior: Loads the upper 20 bits of r19 with 0x1000 (effectively setting r19 to 0x10000000 if the lower 12 bits are zero).
 
 And observed full 5-stage instruction pipeline and pc-increment description waveform.
+
+# Task 5: Documentation and Repository Update
+
+## 📌 Overview
+Task 5 focuses on updating the project repository with proper documentation, visuals, and pin details to ensure clarity and completeness.
+
+## 📌 Project Name and Overview
+**Project Name:** Button Press Counter on VSDSquadron Mini (RISC-V Board)
+
+**Overview:** This project implements a button press counter using the **built-in button** available on the VSDSquadron Mini RISC-V Board. The button is connected to **GPIOA Pin 2**, and every button press is counted and displayed via **UART**. This approach eliminates the need for an external button and ensures ease of testing directly on the board.
+
+---
+
+## 🔹 Components Required
+- **VSDSquadron Mini RISC-V Board** (with built-in button)
+
+---
+
+## 📌 Circuit Connection
+Since the button is inbuilt, no external wiring is required. However, for reference, the table below details the key connections:
+
+| **Pin**         | **Board Pin** | **Description** |
+|----------------|-------------|----------------|
+| **Button**     | GPIOA_2     | Built-in button input (Active Low) |
+| **GND**        | GND         | Common ground connection |
+| **UART_TX**    | PA9         | Serial output for debugging |
+| **UART_RX**    | PA10        | Serial input (optional) |
+
+---
+
+
